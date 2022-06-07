@@ -1,27 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-</head>
-<body>
+  </head>
+  <body>
     <div id="str"></div>
     <script>
-        const div = document.getElementById('str');
-        const viewModel = {};
+      const div = document.getElementById("str");
+      const viewModel = {};
 
-        Object.defineProperty(viewModel, 'str', {
-            get: function() {
-                console.log('접근');
+      (function () {
+        const init = () => {
+          Object.defineProperty(viewModel, "str", {
+            get: function () {
+              console.log("접근");
             },
-            set: function(newValue) {
-                console.log('할당', newValue);
-                div.innerHTML = newValue;
-            }
+            set: function (newValue) {
+              console.log("할당", newValue);
+              render(newValue);
+            },
+          });
+        };
 
-        });
+        const render = (newValue) => {
+          div.innerHTML = newValue;
+        };
+
+        init();
+      })();
     </script>
-</body>
+  </body>
 </html>
