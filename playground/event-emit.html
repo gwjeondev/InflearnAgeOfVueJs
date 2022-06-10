@@ -1,34 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-</head>
-<body>
-  <div id="app">
-    <app-header></app-header>
-  </div>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="app">
+      <!-- event emit 문법 -->
+      <!-- <app-header v-on:하위 컴포넌트에서 발생한 이벤트 이름="상위 컴포넌트의 메서드 이름"></app-header> -->
+      <app-header v-on:pass="logText"></app-header>
+    </div>
 
-  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-  <script>
-    const appHeader = {
-      //event emit 문법
-      template: '<button v-on:click="passEvent">click me</button>',
-      methods: {
-        passEvent: function() {
-          this.$emit('pass');
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+      const appHeader = {
+        //event emit 문법
+        template: '<button v-on:click="passEvent">click me</button>',
+        //하위 컴포넌트 메서드 등록
+        methods: {
+          passEvent: function () {
+            this.$emit('pass'); // pass는 발생할 이벤트의 이름이 됨.
+          }
         }
-      }
-    }
+      };
 
-    new Vue({
-      el: '#app',
-      components: {
-        'app-header': appHeader
-      }
-    })
-  </script>
-</body>
+      new Vue({
+        el: '#app',
+        components: {
+          'app-header': appHeader
+        },
+        //상위 컴포넌트 메서드 등록
+        methods: {
+          logText: function () {
+            console.log('Event Action');
+          }
+        }
+      });
+    </script>
+  </body>
 </html>
