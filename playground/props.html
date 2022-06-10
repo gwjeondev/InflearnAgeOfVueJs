@@ -16,8 +16,9 @@
   <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
   <script>
     const appHeader = {
-      template: '<h1>header</h1>',
-      // prop 속성 이름 정의
+      //template: '<h1>header</h1>',
+      //props를 template에서 사용하는 문법 ==> 중괄호 {{ }}
+      template: '<h1>{{ propsdata }} </h1>',
       props: ['propsdata']
     }
     new Vue({
