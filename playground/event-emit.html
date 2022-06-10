@@ -11,12 +11,13 @@
       <!-- event emit 문법 -->
       <!-- <app-header v-on:하위 컴포넌트에서 발생한 이벤트 이름="상위 컴포넌트의 메서드 이름"></app-header> -->
       <app-header v-on:pass="logText"></app-header>
+      <app-content v-on:add="addNumber" v-bind:num="num"></app-content>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
     <script>
       const appHeader = {
-        //event emit 문법
+        //event emit 문법 
         template: '<button v-on:click="passEvent">click me</button>',
         //하위 컴포넌트 메서드 등록
         methods: {
@@ -26,16 +27,34 @@
         }
       };
 
+      const appContent = {
+        template: '<button v-on:click="addNumber">click me {{ num }}</button>',
+        methods: {
+          addNumber: function() {
+            this.$emit('add');
+          }
+        },
+        props: ['num']
+      }
+
       new Vue({
         el: '#app',
         components: {
-          'app-header': appHeader
+          'app-header': appHeader,
+          'app-content': appContent
         },
         //상위 컴포넌트 메서드 등록
         methods: {
           logText: function () {
             console.log('Event Action');
+          },
+          addNumber: function () {
+            console.log('addNumber Start');
+            this.num++;
           }
+        },
+        data: {
+          num: 10
         }
       });
     </script>
