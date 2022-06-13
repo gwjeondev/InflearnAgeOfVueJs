@@ -8,6 +8,12 @@
   </head>
   <body>
     <div id="app">
+      <div>
+        <!-- router-link tag는 최종적으로 a link 태그로 변환된다 -->
+        <!-- <a href="/login">Login</a> -->
+        <router-link to="/login">Login</router-link>
+        <router-link to="/main">Main</router-link>
+      </div>
       <!-- 인스턴스에서 설정한 router의 정보를 표현하기 위한 router-view tag -->
       <router-view></router-view>
     </div>
