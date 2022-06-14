@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .warning {
+        color: red;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="app">
+      <!-- isError가 true이면 warning class 명을 연결하고, 아닐 경우 연결하지 않음. -->
+      <p v-bind:class="{ warning: isError }">Hello</p>
+      <!-- computed의 메서드도 연결하여 return 값으로 연결 가능하다. methods의 method는 연결 불가함. -->
+      <p v-bind:class="isErrorComputed">Hello</p>
+      <button v-on:click="isErrorToggle">click me</button>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+      new Vue({
+        el: '#app',
+        data: {
+          isError: false
+        },
+        methods: {
+          isErrorToggle() {
+            this.isError = this.isError === true ? false : true;
+          }
+        },
+        computed: {
+          isErrorComputed() {
+            return this.isError ? 'warning' : null;
+          }
+        }
+      });
+    </script>
+  </body>
+</html>
