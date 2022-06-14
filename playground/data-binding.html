@@ -8,9 +8,10 @@
   </head>
   <body>
     <div id="app">
-      <p>{{ num }}</p>
+      <!-- <element v-:..> = vue 디렉티브 문법 -->
+      <p v-bind:id="elementId" v-bind:class="elementClassName">{{ num }}</p> <!-- id와 class연결, 이외에도 HTML 표준 속성과 연결 가능. -->
       <p>{{ doubleNum }}</p>
-      <button v-on:click="increaseNum">increase</button>
+      <button v-on:click="increaseNum">increase</button> <!-- Click Event 연결 -->
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
@@ -18,7 +19,9 @@
       new Vue({
         el: '#app',
         data: {
-          num: 10
+          num: 10,
+          elementId: 'ab@34#$%a!',
+          elementClassName: 'text-blue'
         },
         //computed 속성이란, data에 대한 값이 변화할 때에, 자동으로 변경된다. 즉 num 값을 참조하는 doubleNum이라는 값을 가질 수 있게 된다.
         computed: {
