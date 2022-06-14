@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="app">
+      <p>{{ num }}</p>
+      <p>{{ doubleNum }}</p>
+      <button v-on:click="increaseNum">increase</button>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+      new Vue({
+        el: '#app',
+        data: {
+          num: 10
+        },
+        //computed 속성이란, data에 대한 값이 변화할 때에, 자동으로 변경된다. 즉 num 값을 참조하는 doubleNum이라는 값을 가질 수 있게 된다.
+        computed: {
+          doubleNum() {
+            return this.num * 2;
+          }
+        },
+        methods: {
+          increaseNum() {
+            this.num++;
+          }
+        }
+      });
+    </script>
+  </body>
+</html>
