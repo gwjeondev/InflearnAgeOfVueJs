@@ -1,11 +1,11 @@
-var appHeader = {
+<!-- var appHeader = {
   template: '<div>Header</div>',
   methods: {
     addNum() {
 
     }
   }
-}
+} -->
 
 <template>
   <div>Header</div>
@@ -13,6 +13,7 @@ var appHeader = {
 
 <script>
 export default {
+  // new Vue({ inside options })
   methods: {
     getNum() {
 
